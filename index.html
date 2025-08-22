@@ -71,7 +71,7 @@
   }
   </script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css" />
@@ -82,107 +82,115 @@
       /* Light mode variables */
       --bg-primary: #ffffff;
       --bg-secondary: #f8fafc;
+      --bg-tertiary: #f1f5f9;
       --bg-card: #ffffff;
-      --text-primary: #1e293b;
-      --text-secondary: #64748b;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
       --border-color: #e2e8f0;
-      --accent-color: #3b82f6;
-      --accent-hover: #2563eb;
+      --border-hover: #cbd5e1;
+      --accent-primary: #3b82f6;
+      --accent-secondary: #8b5cf6;
+      --accent-tertiary: #06b6d4;
+      --accent-success: #10b981;
+      --accent-warning: #f59e0b;
+      --accent-error: #ef4444;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
       --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
       --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
       --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      --radius-sm: 0.375rem;
+      --radius: 0.5rem;
+      --radius-md: 0.75rem;
+      --radius-lg: 1rem;
+      --radius-xl: 1.5rem;
+      --radius-2xl: 2rem;
     }
 
     [data-theme="dark"] {
       /* Dark mode variables */
-      --bg-primary: #121212;
-      --bg-secondary: #1A1A1A;
-      --bg-card: #1E1E1E;
-      --text-primary: #FFFFFF;
-      --text-secondary: #B0B0B0;
-      --border-color: #242424;
-      --accent-color: #1E90FF;
-      --accent-hover: #4169E1;
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-tertiary: #334155;
+      --bg-card: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --border-color: #334155;
+      --border-hover: #475569;
+      --accent-primary: #60a5fa;
+      --accent-secondary: #a78bfa;
+      --accent-tertiary: #22d3ee;
+      --accent-success: #34d399;
+      --accent-warning: #fbbf24;
+      --accent-error: #f87171;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
       --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
       --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
       --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+      --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     }
 
     * {
       box-sizing: border-box;
-      font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg-primary);
       color: var(--text-primary);
+      line-height: 1.6;
+      font-weight: 400;
       transition: background-color 0.3s ease, color 0.3s ease;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      font-weight: 400;
-      line-height: 1.6;
     }
 
     /* Header */
-    header {
-      background-color: rgba(255, 255, 255, 0.95);
+    .header {
+      background: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border-color);
-      padding: 1.25rem 0;
       position: sticky;
       top: 0;
-      z-index: 50;
-      box-shadow: var(--shadow);
+      z-index: 100;
+      transition: all 0.3s ease;
     }
 
-    [data-theme="dark"] header {
-      background-color: rgba(15, 23, 42, 0.95);
+    [data-theme="dark"] .header {
+      background: rgba(15, 23, 42, 0.8);
     }
 
-    .header-content {
+    .header-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 1rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
     .logo {
-      color: var(--text-primary);
-      font-size: 2rem;
+      font-size: 1.75rem;
       font-weight: 900;
+      color: var(--text-primary);
       text-decoration: none;
-      transition: all 0.3s ease;
-      font-family: 'Poppins', sans-serif;
-      letter-spacing: -0.05em;
-      background: linear-gradient(135deg, var(--accent-color) 0%, #8b5cf6 100%);
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      position: relative;
-    }
-
-    .logo::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(135deg, var(--accent-color) 0%, #8b5cf6 100%);
-      transition: width 0.3s ease;
-    }
-
-    .logo:hover::after {
-      width: 100%;
+      letter-spacing: -0.025em;
+      transition: all 0.3s ease;
     }
 
     .logo:hover {
-      transform: translateY(-2px);
+      transform: translateY(-1px);
       filter: drop-shadow(0 4px 8px rgba(59, 130, 246, 0.3));
     }
 
@@ -192,11 +200,10 @@
       gap: 1rem;
     }
 
-    /* Theme toggle button */
     .theme-toggle {
-      background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
-      border: 2px solid var(--border-color);
-      border-radius: 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
       padding: 0.75rem;
       cursor: pointer;
       color: var(--text-primary);
@@ -204,182 +211,203 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 48px;
-      height: 48px;
-      font-weight: 600;
+      width: 44px;
+      height: 44px;
+      font-weight: 500;
     }
 
     .theme-toggle:hover {
-      background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
-      border-color: var(--accent-color);
+      background: var(--accent-primary);
+      border-color: var(--accent-primary);
       color: white;
       transform: translateY(-2px);
       box-shadow: var(--shadow-lg);
     }
 
-    /* Main content */
-    main {
-      max-width: 900px;
-      margin: 3rem auto;
-      padding: 0 2rem;
-      flex-grow: 1;
+    /* Main Container */
+    .main-container {
+      flex: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      width: 100%;
     }
 
-    /* Card */
-    .card {
-      background: linear-gradient(135deg, var(--bg-card) 0%, rgba(255, 255, 255, 0.1) 100%);
-      border: 1px solid var(--border-color);
-      border-radius: 24px;
-      padding: 3.5rem;
-      box-shadow: var(--shadow-xl);
-      transition: all 0.4s ease;
-      backdrop-filter: blur(20px);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(135deg, var(--accent-color) 0%, #8b5cf6 50%, #ec4899 100%);
-    }
-
-    [data-theme="dark"] .card {
-      background: linear-gradient(135deg, var(--bg-card) 0%, rgba(30, 41, 59, 0.9) 100%);
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.3);
-      border-color: var(--accent-color);
-    }
-
-    h1 {
+    /* Hero Section */
+    .hero {
       text-align: center;
-      font-size: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 900;
       color: var(--text-primary);
       margin-bottom: 1rem;
-      font-family: 'Poppins', sans-serif;
-      letter-spacing: -0.05em;
-      background: linear-gradient(135deg, var(--accent-color) 0%, #8b5cf6 50%, #ec4899 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      position: relative;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
     }
 
-    h1::after {
-      content: 'Create stunning QR codes instantly';
-      display: block;
-      font-size: 1.1rem;
-      font-weight: 400;
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
       color: var(--text-secondary);
-      margin-top: 0.5rem;
-      background: none;
-      -webkit-background-clip: initial;
-      -webkit-text-fill-color: initial;
-      background-clip: initial;
-      letter-spacing: 0.025em;
+      max-width: 600px;
+      margin: 0 auto;
+      font-weight: 400;
+    }
+
+    /* App Container */
+    .app-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* Form Section */
+    .form-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-2xl);
+      padding: 2rem;
+      box-shadow: var(--shadow-lg);
+      transition: all 0.3s ease;
+      height: fit-content;
+    }
+
+    .form-section:hover {
+      box-shadow: var(--shadow-xl);
+      border-color: var(--border-hover);
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-title svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: var(--accent-primary);
     }
 
     .form-group {
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
-    label {
+    .form-label {
       display: block;
       font-weight: 600;
       color: var(--text-primary);
-      margin-bottom: 0.75rem;
-      font-size: 1rem;
-      font-family: 'Poppins', sans-serif;
-      letter-spacing: 0.025em;
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
-    textarea {
+    .form-input {
       width: 100%;
-      padding: 1.25rem 1.5rem;
-      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+      padding: 1rem 1.25rem;
+      background: var(--bg-secondary);
       color: var(--text-primary);
       border: 2px solid var(--border-color);
-      border-radius: 16px;
+      border-radius: var(--radius-lg);
       font-size: 1rem;
       font-weight: 400;
       transition: all 0.3s ease;
       resize: vertical;
-      min-height: 140px;
-      font-family: 'Inter', sans-serif;
+      min-height: 120px;
+      font-family: inherit;
       line-height: 1.6;
-      box-shadow: var(--shadow);
     }
 
-    textarea:focus {
+    .form-input:focus {
       outline: none;
-      border-color: var(--accent-color);
-      box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1), 0 8px 16px -4px rgba(0, 0, 0, 0.1);
-      transform: translateY(-3px);
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+      background: var(--bg-primary);
     }
 
-    textarea::placeholder {
-      color: var(--text-secondary);
-      font-weight: 400;
+    .form-input::placeholder {
+      color: var(--text-muted);
     }
 
-    .color-picker-group {
+    /* Color Picker Section */
+    .color-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-2xl);
+      padding: 2rem;
+      box-shadow: var(--shadow-lg);
+      transition: all 0.3s ease;
+      height: fit-content;
+    }
+
+    .color-section:hover {
+      box-shadow: var(--shadow-xl);
+      border-color: var(--border-hover);
+    }
+
+    .color-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-bottom: 2.5rem;
+      gap: 1.5rem;
     }
 
-    /* Pickr adjustments */
+    .color-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    /* Pickr Customization */
     .pickr {
       width: 100%;
     }
 
     .pickr .pcr-button {
       width: 100%;
-      height: 56px;
-      border-radius: 12px;
+      height: 48px;
+      border-radius: var(--radius-lg);
       border: 2px solid var(--border-color);
-      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+      background: var(--bg-secondary);
       transition: all 0.3s ease;
       font-weight: 500;
-      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
     }
 
     .pickr .pcr-button:hover {
-      border-color: var(--accent-color);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
+      border-color: var(--accent-primary);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
     }
 
-    /* Button */
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent-color) 0%, #8b5cf6 50%, #ec4899 100%);
+    /* Generate Button */
+    .generate-btn {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
       color: white;
-      font-weight: 800;
-      font-size: 1.125rem;
-      padding: 1.25rem 2rem;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 1rem 2rem;
       border: none;
-      border-radius: 16px;
+      border-radius: var(--radius-xl);
       cursor: pointer;
-      transition: all 0.4s ease;
+      transition: all 0.3s ease;
       width: 100%;
-      font-family: 'Poppins', sans-serif;
-      letter-spacing: 0.025em;
       text-transform: uppercase;
+      letter-spacing: 0.05em;
       box-shadow: var(--shadow-lg);
       position: relative;
       overflow: hidden;
     }
 
-    .btn-primary::before {
+    .generate-btn::before {
       content: '';
       position: absolute;
       top: 0;
@@ -390,232 +418,298 @@
       transition: left 0.5s ease;
     }
 
-    .btn-primary:hover::before {
+    .generate-btn:hover::before {
       left: 100%;
     }
 
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, var(--accent-color) 100%);
-      transform: translateY(-4px);
-      box-shadow: 0 25px 35px -5px rgba(139, 92, 246, 0.3), 0 10px 15px -5px rgba(236, 72, 153, 0.2);
-    }
-
-    .btn-primary:active {
+    .generate-btn:hover {
       transform: translateY(-2px);
+      box-shadow: var(--shadow-2xl);
+      background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
     }
 
-    /* QR Code display */
-    .qr-result {
-      text-align: center;
-      margin-top: 3rem;
-      padding: 3rem;
-      background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(248, 250, 252, 0.8) 100%);
-      border-radius: 20px;
-      border: 1px solid var(--border-color);
-      box-shadow: var(--shadow-xl);
-      position: relative;
-      overflow: hidden;
+    .generate-btn:active {
+      transform: translateY(0);
     }
 
-    .qr-result::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%);
+    .generate-btn.loading {
+      opacity: 0.7;
       pointer-events: none;
     }
 
-    [data-theme="dark"] .qr-result {
-      background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(30, 41, 59, 0.8) 100%);
+    /* QR Result Section */
+    .qr-result {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-2xl);
+      padding: 2rem;
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+      display: none;
+      animation: slideUp 0.5s ease;
+      margin-top: 2rem;
     }
 
-    [data-theme="dark"] .qr-result::before {
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .qr-result.show {
+      display: block;
+    }
+
+    .qr-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .qr-code-container {
+      background: white;
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      display: inline-block;
+      box-shadow: var(--shadow-xl);
+      margin-bottom: 1.5rem;
+      border: 8px solid white;
+    }
+
+    [data-theme="dark"] .qr-code-container {
+      background: var(--bg-secondary);
+      border-color: var(--bg-secondary);
     }
 
     #qrcode canvas {
-      border-radius: 16px;
-      box-shadow: var(--shadow-xl);
+      border-radius: var(--radius-lg);
       max-width: 100%;
       height: auto;
-      border: 6px solid white;
       transition: all 0.3s ease;
     }
 
     #qrcode canvas:hover {
       transform: scale(1.02);
-      box-shadow: 0 25px 50px -12px rgba(139, 92, 246, 0.3);
+      box-shadow: var(--shadow-2xl);
     }
 
-    [data-theme="dark"] #qrcode canvas {
-      border: 6px solid var(--bg-card);
-    }
-
-    /* Download button */
-    .btn-download {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
-      color: var(--accent-color);
-      border: 2px solid var(--accent-color);
-      padding: 1.25rem 2.5rem;
-      border-radius: 16px;
+    .download-btn {
+      background: linear-gradient(135deg, var(--bg-card), var(--bg-secondary));
+      color: var(--accent-primary);
+      border: 2px solid var(--accent-primary);
+      padding: 1rem 2rem;
+      border-radius: var(--radius-xl);
       text-decoration: none;
       font-weight: 700;
-      margin-top: 2rem;
-      transition: all 0.3s ease;
-      font-size: 1rem;
-      font-family: 'Poppins', sans-serif;
-      letter-spacing: 0.025em;
+      font-size: 0.875rem;
       text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.3s ease;
+      display: inline-block;
       box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
     }
 
-    .btn-download::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
-      transition: left 0.5s ease;
-    }
-
-    .btn-download:hover::before {
-      left: 100%;
-    }
-
-    .btn-download:hover {
-      background: linear-gradient(135deg, var(--accent-color) 0%, #8b5cf6 100%);
+    .download-btn:hover {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
       color: white;
-      transform: translateY(-3px);
-      box-shadow: 0 20px 25px -5px rgba(139, 92, 246, 0.3);
-      border-color: #8b5cf6;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--accent-secondary);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      padding: 2rem 0;
+      margin-top: auto;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      text-align: center;
+      color: var(--text-secondary);
+    }
+
+    .footer-text {
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .app-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 1rem;
+      }
+
+      .main-container {
+        padding: 1.5rem 1rem;
+      }
+
+      .hero {
+        margin-bottom: 2rem;
+      }
+
+      .form-section,
+      .color-section {
+        padding: 1.5rem;
+        border-radius: var(--radius-xl);
+      }
+
+      .color-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .section-title {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+      }
+
+      .form-input {
+        min-height: 100px;
+        padding: 0.875rem 1rem;
+      }
+
+      .generate-btn {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.875rem;
+      }
+
+      .qr-result {
+        padding: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .qr-code-container {
+        padding: 1.5rem;
+      }
+
+      #qrcode canvas {
+        width: 250px;
+        height: 250px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-container {
+        padding: 0.75rem;
+      }
+
+      .main-container {
+        padding: 1rem 0.75rem;
+      }
+
+      .form-section,
+      .color-section {
+        padding: 1rem;
+        border-radius: var(--radius-lg);
+      }
+
+      .hero-title {
+        font-size: 1.75rem;
+      }
+
+      .hero-subtitle {
+        font-size: 0.875rem;
+      }
+
+      .form-input {
+        min-height: 80px;
+        padding: 0.75rem;
+        font-size: 0.875rem;
+      }
+
+      .generate-btn {
+        padding: 0.75rem 1rem;
+        font-size: 0.75rem;
+      }
+
+      .qr-result {
+        padding: 1rem;
+      }
+
+      .qr-code-container {
+        padding: 1rem;
+      }
+
+      #qrcode canvas {
+        width: 200px;
+        height: 200px;
+      }
+
+      .download-btn {
+        padding: 0.75rem 1rem;
+        font-size: 0.75rem;
+      }
+    }
+
+    /* Loading Animation */
+    .loading-spinner {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s ease-in-out infinite;
+      margin-right: 0.5rem;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Success Animation */
+    .success-check {
+      color: var(--accent-success);
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Utility Classes */
+    .hidden {
+      display: none !important;
     }
 
     .text-center {
       text-align: center;
     }
 
-    /* Footer */
-    footer {
-      background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
-      border-top: 1px solid var(--border-color);
-      padding: 2.5rem 0;
-      margin-top: auto;
+    .mb-4 {
+      margin-bottom: 1rem;
     }
 
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      text-align: center;
-      color: var(--text-secondary);
-      font-size: 1rem;
-      font-weight: 500;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    /* Responsive design */
-    @media (max-width: 768px) {
-      .header-content {
-        padding: 0 1.5rem;
-      }
-
-      main {
-        margin: 2rem auto;
-        padding: 0 1.5rem;
-      }
-
-      .card {
-        padding: 2rem;
-        border-radius: 16px;
-      }
-
-      h1 {
-        font-size: 2rem;
-        margin-bottom: 2rem;
-      }
-
-      .color-picker-group {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-
-      #qrcode canvas {
-        width: 280px;
-        height: 280px;
-      }
-
-      .btn-primary, .btn-download {
-        padding: 0.875rem 1.5rem;
-        font-size: 1rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .card {
-        padding: 1.5rem;
-        border-radius: 12px;
-      }
-
-      h1 {
-        font-size: 1.75rem;
-      }
-
-      #qrcode canvas {
-        width: 240px;
-        height: 240px;
-      }
-
-      .btn-primary, .btn-download {
-        padding: 0.75rem 1.25rem;
-        font-size: 0.875rem;
-      }
-    }
-
-    /* Loading state */
-    .loading {
-      opacity: 0.7;
-      pointer-events: none;
-    }
-
-    /* Success animation */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .qr-result {
-      animation: fadeIn 0.5s ease;
-    }
-
-    /* Additional animations */
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-
-    .btn-primary:hover {
-      animation: pulse 2s infinite;
+    .mb-6 {
+      margin-bottom: 1.5rem;
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="header-content">
+  <header class="header">
+    <div class="header-container">
       <a href="https://text2.click" class="logo">Text2</a>
       <div class="header-actions">
         <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-          <svg id="sun-icon" width="24" height="24" fill="currentColor" viewBox="0 0 20 20" style="display: none;">
+          <svg id="sun-icon" width="20" height="20" fill="currentColor" viewBox="0 0 20 20" style="display: none;">
             <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
           </svg>
-          <svg id="moon-icon" width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
+          <svg id="moon-icon" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
           </svg>
         </button>
@@ -623,47 +717,82 @@
     </div>
   </header>
 
-  <main>
-    <div class="card">
-      <h1>Text2 QR Code Generator</h1>
+  <main class="main-container">
+    <div class="hero">
+      <h1 class="hero-title">QR Code Generator</h1>
 
-      <div class="form-group">
-        <label for="textInput">Enter text or URL</label>
-        <textarea 
-          id="textInput" 
-          placeholder="Enter your text, URL, phone number, or any other data here..."
-          rows="4"
-        ></textarea>
-      </div>
+    </div>
 
-      <div class="color-picker-group">
+    <div class="app-container">
+      <!-- Form Section -->
+      <div class="form-section">
+        <h2 class="section-title">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+          </svg>
+          Content
+        </h2>
+        
         <div class="form-group">
-          <label for="darkColor">QR Code Color</label>
-          <div id="darkColor"></div>
+          <label for="textInput" class="form-label">Text, URL, or Data</label>
+          <textarea 
+            id="textInput" 
+            class="form-input"
+            placeholder="Enter your text, website URL, phone number, email, or any other data you want to encode in the QR code..."
+            rows="4"
+          ></textarea>
         </div>
 
-        <div class="form-group">
-          <label for="lightColor">Background Color</label>
-          <div id="lightColor"></div>
+        <button class="generate-btn" onclick="generateQR()" id="generateBtn">
+          <span class="btn-text">Generate QR Code</span>
+          <span class="btn-loading hidden">
+            <span class="loading-spinner"></span>
+            Generating...
+          </span>
+        </button>
+      </div>
+
+      <!-- Color Section -->
+      <div class="color-section">
+        <h2 class="section-title">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+          </svg>
+          Customization
+        </h2>
+        
+        <div class="color-grid">
+          <div class="color-item">
+            <label class="form-label">QR Code Color</label>
+            <div id="darkColor"></div>
+          </div>
+          
+          <div class="color-item">
+            <label class="form-label">Background Color</label>
+            <div id="lightColor"></div>
+          </div>
         </div>
       </div>
+    </div>
 
-      <button class="btn-primary" onclick="generateQR()">
-        Generate QR Code
-      </button>
-
-      <div id="qrcode" class="qr-result" style="display: none;"></div>
-      <div class="text-center">
-        <a id="downloadLink" class="btn-download" style="display: none;" download="qr-code.png">
-          Download QR Code
-        </a>
+    <!-- QR Result Section -->
+    <div id="qrResult" class="qr-result">
+      <div class="success-check">✓</div>
+      <h3 class="qr-title">Your QR Code is Ready!</h3>
+      
+      <div class="qr-code-container">
+        <div id="qrcode"></div>
       </div>
+      
+      <a id="downloadLink" class="download-btn" download="qr-code.png">
+        Download QR Code
+      </a>
     </div>
   </main>
 
-  <footer>
-    <div class="footer-content">
-      <p>© 2024 Text2. QR Code Generator built with precision and care.</p>
+  <footer class="footer">
+    <div class="footer-container">
+      <p class="footer-text">© 2024 Text2. Professional QR Code Generator built with precision and care.</p>
     </div>
   </footer>
 
@@ -738,8 +867,11 @@
       const darkColor = darkPicker.getColor().toHEXA().toString();
       const lightColor = lightPicker.getColor().toHEXA().toString();
       const qrContainer = document.getElementById("qrcode");
+      const qrResult = document.getElementById("qrResult");
       const downloadLink = document.getElementById("downloadLink");
-      const button = document.querySelector('.btn-primary');
+      const generateBtn = document.getElementById("generateBtn");
+      const btnText = generateBtn.querySelector('.btn-text');
+      const btnLoading = generateBtn.querySelector('.btn-loading');
 
       if (!text) {
         alert("Please enter some text or URL to generate QR code.");
@@ -747,12 +879,12 @@
       }
 
       // Show loading state
-      button.textContent = 'Generating...';
-      button.classList.add('loading');
+      btnText.classList.add('hidden');
+      btnLoading.classList.remove('hidden');
+      generateBtn.classList.add('loading');
 
       qrContainer.innerHTML = "";
-      qrContainer.style.display = "none";
-      downloadLink.style.display = "none";
+      qrResult.classList.remove('show');
 
       QRCode.toCanvas(text, {
         width: 300,
@@ -764,8 +896,9 @@
         errorCorrectionLevel: 'M'
       }, function (err, canvas) {
         // Remove loading state
-        button.textContent = 'Generate QR Code';
-        button.classList.remove('loading');
+        btnText.classList.remove('hidden');
+        btnLoading.classList.add('hidden');
+        generateBtn.classList.remove('loading');
 
         if (err) {
           console.error(err);
@@ -774,11 +907,10 @@
         }
 
         qrContainer.appendChild(canvas);
-        qrContainer.style.display = "block";
+        qrResult.classList.add('show');
         
         const dataURL = canvas.toDataURL("image/png");
         downloadLink.href = dataURL;
-        downloadLink.style.display = "inline-block";
         downloadLink.download = `qr-code-${Date.now()}.png`;
       });
     }
@@ -786,6 +918,14 @@
     // Enter key to generate QR code
     document.getElementById('textInput').addEventListener('keydown', function(e) {
       if (e.key === 'Enter' && e.ctrlKey) {
+        generateQR();
+      }
+    });
+
+    // Auto-generate on first load if there's text
+    document.addEventListener('DOMContentLoaded', function() {
+      const textInput = document.getElementById('textInput');
+      if (textInput.value.trim()) {
         generateQR();
       }
     });
