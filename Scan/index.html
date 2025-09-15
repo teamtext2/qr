@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>QR Scanner</title>
+  <style>
+    body{margin:0;font-family:sans-serif;background:#0f1724;color:#fff;display:flex;align-items:center;justify-content:center;height:100vh}
+    .card{background:#1e293b;padding:20px;border-radius:16px;box-shadow:0 8px 20px rgba(0,0,0,.6);width:100%;max-width:420px;text-align:center}
+    video{width:100%;border-radius:12px}
+    canvas{display:none}
+    .btn{margin:6px 4px;padding:10px 14px;border:none;border-radius:8px;cursor:pointer;font-weight:600}
+    .primary{background:#7c3aed;color:#fff}
+    .ghost{background:transparent;border:1px solid #64748b;color:#94a3b8}
+    #output{margin-top:12px;word-break:break-all;background:#0f172a;padding:10px;border-radius:8px;font-size:14px}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>QR Scanner</h2>
+    <video id="video" autoplay playsinline></video>
+    <canvas id="canvas"></canvas>
+    <div>
+      <button class="btn primary" id="startCam">Bật camera</button>
+      <label class="btn ghost">Tải ảnh<input type="file" id="fileInput" accept="image/*" hidden></label>
+    </div>
+    <div id="output">Chưa có dữ liệu</div>
+    <div>
+      <button class="btn ghost" id="copyBtn">Sao chép</button>
+      <button class="btn ghost" id="openBtn">Mở</button>
+    </div>
+  </div>
+
+  <script>
+    const video=document.getElementById('video');
+    const canvas=document.getElementById('canvas');
+    const ctx=canvas.getContext('2d');
+    const startCam=document.getElementById('startCam');
+    const fileInput=document.getElementById('fileInput');
+    const output=document.getElementById('output');
+    const copyBtn=document.getElementById('copyBtn');
+    const openBtn=document.getElementById('openBtn');
+
+    let stream,lastResult='';
+    let detector;
+
+    async function initDetector(){
+      if('BarcodeDetector' in window){
+        detector=new BarcodeDetector({formats:['qr_code']});
+      }else{
+        await loadJsQR();
+      }
+    }
+    function loadJsQR(){
+      return new Promise((res,rej)=>{
+        const s=document.createElement('script');
+        s.src='https://unpkg.com/jsqr/dist/jsQR.js';
+        s.onload=()=>res();s.onerror=()=>rej();
+        document.head.appendChild(s);
+      });
+    }
+
+    async function startCamera(){
+      stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}});
+      video.srcObject=stream;
+      requestAnimationFrame(tick);
+    }
+
+    async function tick(){
+      if(!video.videoWidth) return requestAnimationFrame(tick);
+      canvas.width=video.videoWidth;canvas.height=video.videoHeight;
+      ctx.drawImage(video,0,0,canvas.width,canvas.height);
+      if(detector){
+        const bitmap=await createImageBitmap(canvas);
+        const codes=await detector.detect(bitmap);
+        if(codes.length) showResult(codes[0].rawValue);
+      }else if(window.jsQR){
+        const img=ctx.getImageData(0,0,canvas.width,canvas.height);
+        const code=jsQR(img.data,img.width,img.height);
+        if(code) showResult(code.data);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    function showResult(txt){lastResult=txt;output.textContent=txt;}
+    startCam.onclick=()=>{initDetector().then(startCamera)};
+
+    fileInput.onchange=e=>{
+      const f=e.target.files[0];if(!f)return;
+      const img=new Image();
+      img.onload=async()=>{
+        canvas.width=img.width;canvas.height=img.height;ctx.drawImage(img,0,0);
+        if(detector){
+          const bitmap=await createImageBitmap(canvas);
+          const codes=await detector.detect(bitmap);
+          if(codes.length) showResult(codes[0].rawValue);
+        }else if(window.jsQR){
+          const imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
+          const code=jsQR(imgData.data,imgData.width,imgData.height);
+          if(code) showResult(code.data);
+        }
+      };
+      img.src=URL.createObjectURL(f);
+    };
+
+    copyBtn.onclick=()=>{if(lastResult)navigator.clipboard.writeText(lastResult)};
+    openBtn.onclick=()=>{if(lastResult)window.open(lastResult,'_blank')};
+  </script>
+</body>
+</html>
