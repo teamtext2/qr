@@ -93,8 +93,8 @@
       --text-muted: #94a3b8;
       --border-color: #e2e8f0;
       --border-hover: #cbd5e1;
-      --accent-primary: #3b82f6;
-      --accent-secondary: #8b5cf6;
+      --accent-primary: #1E90FF;
+      --accent-secondary: #4169E1;
       --accent-tertiary: #06b6d4;
       --accent-success: #10b981;
       --accent-warning: #f59e0b;
@@ -114,28 +114,28 @@
     }
 
     [data-theme="dark"] {
-      /* Dark mode variables */
-      --bg-primary: #0f172a;
-      --bg-secondary: #1e293b;
-      --bg-tertiary: #334155;
-      --bg-card: #1e293b;
-      --text-primary: #f8fafc;
-      --text-secondary: #cbd5e1;
-      --text-muted: #94a3b8;
-      --border-color: #334155;
-      --border-hover: #475569;
-      --accent-primary: #60a5fa;
-      --accent-secondary: #a78bfa;
+      /* Dark mode variables - Updated with new color scheme */
+      --bg-primary: #121212;
+      --bg-secondary: #1E1E1E;
+      --bg-tertiary: #242424;
+      --bg-card: #1E1E1E;
+      --text-primary: #FFFFFF;
+      --text-secondary: #B0B0B0;
+      --text-muted: #808080;
+      --border-color: #242424;
+      --border-hover: #2A2A2A;
+      --accent-primary: #1E90FF;
+      --accent-secondary: #4169E1;
       --accent-tertiary: #22d3ee;
       --accent-success: #34d399;
       --accent-warning: #fbbf24;
       --accent-error: #f87171;
-      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-      --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
-      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-      --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+      --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+      --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
     }
 
     * {
@@ -788,6 +788,14 @@
         <div id="qrcode"></div>
       </div>
       
+      <!-- Download Button -->
+      <a id="downloadLink" class="download-btn" download="qr-code.png" style="display: none;">
+        Download QR Code
+      </a>
+    </div>
+
+    <!-- Download Section -->
+    <div id="downloadSection" class="download-section" style="display: none;">
       <a id="downloadLink" class="download-btn" download="qr-code.png">
         Download QR Code
       </a>
@@ -889,6 +897,7 @@
 
       qrContainer.innerHTML = "";
       qrResult.classList.remove('show');
+      downloadLink.style.display = 'none'; // Hide download link initially
 
       QRCode.toCanvas(text, {
         width: 300,
@@ -916,6 +925,7 @@
         const dataURL = canvas.toDataURL("image/png");
         downloadLink.href = dataURL;
         downloadLink.download = `qr-code-${Date.now()}.png`;
+        downloadLink.style.display = 'inline-block'; // Show download link after generation
       });
     }
 
