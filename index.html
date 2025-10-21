@@ -1,949 +1,341 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi" class="">
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Meta Tags -->
+    <title>Trình tạo mã QR - Hiện đại & Miễn phí | Text2</title>
+    <meta name="description" content="Tạo mã QR miễn phí với giao diện hiện đại, nhanh chóng. Dễ dàng tạo QR cho URL, văn bản, số điện thoại và nhiều loại dữ liệu khác. Tùy chỉnh màu sắc và tải xuống ngay lập tức." />
+    <meta name="keywords" content="tạo mã qr, trình tạo qr, qr code generator, miễn phí qr code, qr code online" />
+    <meta name="author" content="Text2" />
+    <meta name="robots" content="index, follow" />
+
     <!-- Google tag (gtag.js) - GA4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ABCDEFG123"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-6J85STMJ14');
-  </script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <!-- SEO Meta Tags -->
-  <title>QR Code Generator - Create Free QR Codes | Text2</title>
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1722731267767270"
-     crossorigin="anonymous"></script>
-  <meta name="description" content="Create free QR codes with Text2. Generate QR codes for URLs, text, phone numbers and many other data types. Customize colors and download instantly." />
-  <meta name="keywords" content="QR code generator, create QR code, QR code maker, free QR code, QR code online, create QR code for website, QR code for URL" />
-  <meta name="author" content="Text2" />
-  <meta name="robots" content="index, follow" />
-  
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="QR Code Generator - Create Free QR Codes | Text2" />
-  <meta property="og:description" content="Create free QR codes with Text2. Generate QR codes for URLs, text, phone numbers and many other data types." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://text2.click/app/qr" />
-  <meta property="og:image" content="https://text2.click/app/qr/media/img.png" />
-  <meta property="og:site_name" content="Text2" />
-  <meta property="og:locale" content="en_US" />
-  
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="QR Code Generator - Create Free QR Codes | Text2" />
-  <meta name="twitter:description" content="Create free QR codes with Text2. Generate QR codes for URLs, text, phone numbers and many other data types." />
-  <meta name="twitter:image" content="https://text2.click/app/qr/media/img.png" />
-  
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://text2.click/app/qr" />
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="https://qr.text2.click/favicon.ico">
-  <link rel="shortcut icon" type="image/x-icon" href="https://qr.text2.click/favicon.ico">
-  <link rel="apple-touch-icon" href="https://qr.text2.click/favicon.ico">
-  
-  <!-- Additional Meta Tags -->
-  <meta name="theme-color" content="#3b82f6" />
-  <meta name="msapplication-TileColor" content="#3b82f6" />
-  <meta name="application-name" content="Text2 QR Code Generator" />
-  
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Text2 QR Code Generator",
-    "description": "Create free QR codes with Text2. Generate QR codes for URLs, text, phone numbers and many other data types.",
-    "url": "https://text2.click/app/qr",
-    "applicationCategory": "UtilityApplication",
-    "operatingSystem": "Web Browser",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "creator": {
-      "@type": "Organization",
-      "name": "Text2"
-    }
-  }
-  </script>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
-  
-  <style>
-    :root {
-      /* Light mode variables */
-      --bg-primary: #ffffff;
-      --bg-secondary: #f8fafc;
-      --bg-tertiary: #f1f5f9;
-      --bg-card: #ffffff;
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --text-muted: #94a3b8;
-      --border-color: #e2e8f0;
-      --border-hover: #cbd5e1;
-      --accent-primary: #1E90FF;
-      --accent-secondary: #4169E1;
-      --accent-tertiary: #06b6d4;
-      --accent-success: #10b981;
-      --accent-warning: #f59e0b;
-      --accent-error: #ef4444;
-      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-      --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      --radius-sm: 0.375rem;
-      --radius: 0.5rem;
-      --radius-md: 0.75rem;
-      --radius-lg: 1rem;
-      --radius-xl: 1.5rem;
-      --radius-2xl: 2rem;
-    }
-
-    [data-theme="dark"] {
-      /* Dark mode variables - Updated with new color scheme */
-      --bg-primary: #121212;
-      --bg-secondary: #1E1E1E;
-      --bg-tertiary: #242424;
-      --bg-card: #1E1E1E;
-      --text-primary: #FFFFFF;
-      --text-secondary: #B0B0B0;
-      --text-muted: #808080;
-      --border-color: #242424;
-      --border-hover: #2A2A2A;
-      --accent-primary: #1E90FF;
-      --accent-secondary: #4169E1;
-      --accent-tertiary: #22d3ee;
-      --accent-success: #34d399;
-      --accent-warning: #fbbf24;
-      --accent-error: #f87171;
-      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
-      --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
-      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
-      --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      line-height: 1.6;
-      font-weight: 400;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Header */
-    .header {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border-color);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      transition: all 0.3s ease;
-    }
-
-    [data-theme="dark"] .header {
-      background: rgba(15, 23, 42, 0.8);
-    }
-
-    .header-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 1.75rem;
-      font-weight: 900;
-      color: var(--text-primary);
-      text-decoration: none;
-      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: -0.025em;
-      transition: all 0.3s ease;
-    }
-
-    .logo:hover {
-      transform: translateY(-1px);
-      filter: drop-shadow(0 4px 8px rgba(59, 130, 246, 0.3));
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .theme-toggle {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 0.75rem;
-      cursor: pointer;
-      color: var(--text-primary);
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 44px;
-      height: 44px;
-      font-weight: 500;
-    }
-
-    .theme-toggle:hover {
-      background: var(--accent-primary);
-      border-color: var(--accent-primary);
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    /* Main Container */
-    .main-container {
-      flex: 1;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem;
-      width: 100%;
-    }
-
-    /* Hero Section */
-    .hero {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .hero-title {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 900;
-      color: var(--text-primary);
-      margin-bottom: 1rem;
-      letter-spacing: -0.025em;
-      line-height: 1.1;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      color: var(--text-secondary);
-      max-width: 600px;
-      margin: 0 auto;
-      font-weight: 400;
-    }
-
-    /* App Container */
-    .app-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    /* Form Section */
-    .form-section {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-2xl);
-      padding: 2rem;
-      box-shadow: var(--shadow-lg);
-      transition: all 0.3s ease;
-      height: fit-content;
-    }
-
-    .form-section:hover {
-      box-shadow: var(--shadow-xl);
-      border-color: var(--border-hover);
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .section-title svg {
-      width: 1.5rem;
-      height: 1.5rem;
-      color: var(--accent-primary);
-    }
-
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-
-    .form-label {
-      display: block;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
-      font-size: 0.875rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .form-input {
-      width: 100%;
-      padding: 1rem 1.25rem;
-      background: var(--bg-secondary);
-      color: var(--text-primary);
-      border: 2px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      font-size: 1rem;
-      font-weight: 400;
-      transition: all 0.3s ease;
-      resize: vertical;
-      min-height: 120px;
-      font-family: inherit;
-      line-height: 1.6;
-    }
-
-    .form-input:focus {
-      outline: none;
-      border-color: var(--accent-primary);
-      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
-      background: var(--bg-primary);
-    }
-
-    .form-input::placeholder {
-      color: var(--text-muted);
-    }
-
-    /* Color Picker Section */
-    .color-section {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-2xl);
-      padding: 2rem;
-      box-shadow: var(--shadow-lg);
-      transition: all 0.3s ease;
-      height: fit-content;
-    }
-
-    .color-section:hover {
-      box-shadow: var(--shadow-xl);
-      border-color: var(--border-hover);
-    }
-
-    .color-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-
-    .color-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    /* Pickr Customization */
-    .pickr {
-      width: 100%;
-    }
-
-    .pickr .pcr-button {
-      width: 100%;
-      height: 48px;
-      border-radius: var(--radius-lg);
-      border: 2px solid var(--border-color);
-      background: var(--bg-secondary);
-      transition: all 0.3s ease;
-      font-weight: 500;
-      cursor: pointer;
-    }
-
-    .pickr .pcr-button:hover {
-      border-color: var(--accent-primary);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-md);
-    }
-
-    /* Generate Button */
-    .generate-btn {
-      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-      color: white;
-      font-weight: 700;
-      font-size: 1rem;
-      padding: 1rem 2rem;
-      border: none;
-      border-radius: var(--radius-xl);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      width: 100%;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      box-shadow: var(--shadow-lg);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .generate-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: left 0.5s ease;
-    }
-
-    .generate-btn:hover::before {
-      left: 100%;
-    }
-
-    .generate-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-2xl);
-      background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
-    }
-
-    .generate-btn:active {
-      transform: translateY(0);
-    }
-
-    .generate-btn.loading {
-      opacity: 0.7;
-      pointer-events: none;
-    }
-
-    /* QR Result Section */
-    .qr-result {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-2xl);
-      padding: 2rem;
-      box-shadow: var(--shadow-lg);
-      text-align: center;
-      display: none;
-      animation: slideUp 0.5s ease;
-      margin-top: 2rem;
-    }
-
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .qr-result.show {
-      display: block;
-    }
-
-    .qr-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 1.5rem;
-    }
-
-    .qr-code-container {
-      background: white;
-      border-radius: var(--radius-xl);
-      padding: 2rem;
-      display: inline-block;
-      box-shadow: var(--shadow-xl);
-      margin-bottom: 1.5rem;
-      border: 8px solid white;
-    }
-
-    [data-theme="dark"] .qr-code-container {
-      background: var(--bg-secondary);
-      border-color: var(--bg-secondary);
-    }
-
-    #qrcode canvas {
-      border-radius: var(--radius-lg);
-      max-width: 100%;
-      height: auto;
-      transition: all 0.3s ease;
-    }
-
-    #qrcode canvas:hover {
-      transform: scale(1.02);
-      box-shadow: var(--shadow-2xl);
-    }
-
-    .download-btn {
-      background: linear-gradient(135deg, var(--bg-card), var(--bg-secondary));
-      color: var(--accent-primary);
-      border: 2px solid var(--accent-primary);
-      padding: 1rem 2rem;
-      border-radius: var(--radius-xl);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.875rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      transition: all 0.3s ease;
-      display: inline-block;
-      box-shadow: var(--shadow);
-    }
-
-    .download-btn:hover {
-      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-xl);
-      border-color: var(--accent-secondary);
-    }
-
-    /* Footer */
-    .footer {
-      background: var(--bg-secondary);
-      border-top: 1px solid var(--border-color);
-      padding: 2rem 0;
-      margin-top: auto;
-    }
-
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      text-align: center;
-      color: var(--text-secondary);
-    }
-
-    .footer-text {
-      font-size: 0.875rem;
-      font-weight: 500;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 1024px) {
-      .app-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .header-container {
-        padding: 1rem;
-      }
-
-      .main-container {
-        padding: 1.5rem 1rem;
-      }
-
-      .hero {
-        margin-bottom: 2rem;
-      }
-
-      .form-section,
-      .color-section {
-        padding: 1.5rem;
-        border-radius: var(--radius-xl);
-      }
-
-      .color-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-
-      .section-title {
-        font-size: 1.25rem;
-        margin-bottom: 1rem;
-      }
-
-      .form-input {
-        min-height: 100px;
-        padding: 0.875rem 1rem;
-      }
-
-      .generate-btn {
-        padding: 0.875rem 1.5rem;
-        font-size: 0.875rem;
-      }
-
-      .qr-result {
-        padding: 1.5rem;
-        margin-top: 1.5rem;
-      }
-
-      .qr-code-container {
-        padding: 1.5rem;
-      }
-
-      #qrcode canvas {
-        width: 250px;
-        height: 250px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .header-container {
-        padding: 0.75rem;
-      }
-
-      .main-container {
-        padding: 1rem 0.75rem;
-      }
-
-      .form-section,
-      .color-section {
-        padding: 1rem;
-        border-radius: var(--radius-lg);
-      }
-
-      .hero-title {
-        font-size: 1.75rem;
-      }
-
-      .hero-subtitle {
-        font-size: 0.875rem;
-      }
-
-      .form-input {
-        min-height: 80px;
-        padding: 0.75rem;
-        font-size: 0.875rem;
-      }
-
-      .generate-btn {
-        padding: 0.75rem 1rem;
-        font-size: 0.75rem;
-      }
-
-      .qr-result {
-        padding: 1rem;
-      }
-
-      .qr-code-container {
-        padding: 1rem;
-      }
-
-      #qrcode canvas {
-        width: 200px;
-        height: 200px;
-      }
-
-      .download-btn {
-        padding: 0.75rem 1rem;
-        font-size: 0.75rem;
-      }
-    }
-
-    /* Loading Animation */
-    .loading-spinner {
-      display: inline-block;
-      width: 1rem;
-      height: 1rem;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
-      border-top-color: white;
-      animation: spin 1s ease-in-out infinite;
-      margin-right: 0.5rem;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* Success Animation */
-    .success-check {
-      color: var(--accent-success);
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    /* Utility Classes */
-    .hidden {
-      display: none !important;
-    }
-
-    .text-center {
-      text-align: center;
-    }
-
-    .mb-4 {
-      margin-bottom: 1rem;
-    }
-
-    .mb-6 {
-      margin-bottom: 1.5rem;
-    }
-  </style>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ABCDEFG123"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6J85STMJ14');
+    </script>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://placehold.co/180x180/000000/FFFFFF/png?text=T2">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://placehold.co/32x32/000000/FFFFFF/png?text=T2">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://placehold.co/16x16/000000/FFFFFF/png?text=T2">
+
+    <!-- Tailwind CSS & Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- QR & Color Picker Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for a more modern feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+        
+        /* Custom styles for the color picker to match the theme */
+        .pickr .pcr-button {
+            height: 48px;
+            width: 100%;
+            border-radius: 0.75rem; /* rounded-xl */
+            transition: all 0.2s ease-in-out;
+            border: 1px solid #e2e8f0; /* slate-200 */
+        }
+        .dark .pickr .pcr-button {
+            border: 1px solid #334155; /* slate-700 */
+        }
+        .pickr .pcr-button:hover {
+            border-color: #3b82f6; /* blue-500 */
+        }
+        .pickr .pcr-button::before,
+        .pickr .pcr-button::after {
+            border-radius: 0.75rem;
+        }
+
+        /* Animation for the QR code appearance */
+        .qr-pop-in {
+            animation: popIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+        }
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        /* Details/Summary accordion styling */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details .summary-icon {
+            transition: transform 0.2s ease-in-out;
+        }
+        details[open] .summary-icon {
+            transform: rotate(180deg);
+        }
+    </style>
 </head>
-<body>
-  <header class="header">
-    <div class="header-container">
-      <a href="https://text2.click" class="logo">Text2</a>
-      <div class="header-actions">
-        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-          <svg id="sun-icon" width="20" height="20" fill="currentColor" viewBox="0 0 20 20" style="display: none;">
-            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
-          </svg>
-          <svg id="moon-icon" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </header>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-300">
 
-  <main class="main-container">
-    <div class="hero">
-      <h1 class="hero-title">QR Code Generator</h1>
+    <!-- Header -->
+    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="#" class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-600">
+                    Text2 QR
+                </a>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 focus:ring-offset-slate-50 dark:focus:ring-offset-slate-900">
+                    <svg id="sun-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <svg id="moon-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
 
-    </div>
-
-    <div class="app-container">
-      <!-- Form Section -->
-      <div class="form-section">
-        <h2 class="section-title">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-          </svg>
-          Content
-        </h2>
-        
-        <div class="form-group">
-          <label for="textInput" class="form-label">Text, URL, or Data</label>
-          <textarea 
-            id="textInput" 
-            class="form-input"
-            placeholder="Enter your text, website URL, phone number, email, or any other data you want to encode in the QR code..."
-            rows="4"
-          ></textarea>
+    <!-- Main App Layout -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <div class="text-center mb-10">
+            <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight">Trình Tạo Mã QR Siêu Cấp</h1>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-400">
+                Chỉ cần dán nội dung, tùy chỉnh một chút là có ngay mã QR xịn sò.
+            </p>
         </div>
 
-        <button class="generate-btn" onclick="generateQR()" id="generateBtn">
-          <span class="btn-text">Generate QR Code</span>
-          <span class="btn-loading hidden">
-            <span class="loading-spinner"></span>
-            Generating...
-          </span>
-        </button>
-      </div>
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-start">
 
-      <!-- Color Section -->
-      <div class="color-section">
-        <h2 class="section-title">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
-          </svg>
-          Customization
-        </h2>
-        
-        <div class="color-grid">
-          <div class="color-item">
-            <label class="form-label">QR Code Color</label>
-            <div id="darkColor"></div>
-          </div>
-          
-          <div class="color-item">
-            <label class="form-label">Background Color</label>
-            <div id="lightColor"></div>
-          </div>
+            <!-- Controls Panel -->
+            <div class="lg:col-span-3 bg-white dark:bg-slate-800/50 p-6 md:p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700">
+                <div class="space-y-6">
+                    <!-- Content Input -->
+                    <div>
+                        <label for="textInput" class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
+                            1. Nhập nội dung (URL, văn bản, số điện thoại,...)
+                        </label>
+                        <textarea id="textInput" rows="5" class="w-full p-4 bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 placeholder-slate-400" placeholder="https://text2.click"></textarea>
+                    </div>
+
+                    <!-- Customization Accordion -->
+                    <details class="group">
+                        <summary class="flex items-center justify-between cursor-pointer py-2">
+                            <span class="text-sm font-semibold text-slate-700 dark:text-slate-300">2. Tùy chỉnh màu sắc (tùy chọn)</span>
+                             <svg class="h-5 w-5 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-200 summary-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </summary>
+                        <div class="pt-4 grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-2">Màu mã QR</label>
+                                <div id="darkColor"></div>
+                            </div>
+                             <div>
+                                <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-2">Màu nền</label>
+                                <div id="lightColor"></div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- QR Code Preview Panel -->
+            <div class="lg:col-span-2 sticky top-24">
+                <div id="qr-preview-card" class="bg-white dark:bg-slate-800/50 p-6 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700">
+                    <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-4">3. Xem trước và Tải về</h3>
+                    
+                    <!-- Placeholder -->
+                    <div id="qr-placeholder" class="aspect-square bg-slate-100 dark:bg-slate-800 rounded-xl flex flex-col items-center justify-center text-center p-4 transition-all duration-300">
+                        <svg class="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4" />
+                        </svg>
+                        <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Mã QR của bạn sẽ xuất hiện ở đây</p>
+                    </div>
+
+                    <!-- QR Code & Download Button -->
+                    <div id="qr-result-container" class="hidden">
+                        <div class="p-4 bg-white rounded-xl shadow-inner aspect-square qr-pop-in">
+                            <div id="qrcode" class="flex justify-center items-center h-full"></div>
+                        </div>
+                        <a id="downloadLink" class="mt-6 w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-xl transition duration-200 transform hover:scale-102 active:scale-98 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 focus:ring-offset-slate-50 dark:focus:ring-offset-slate-900" download="qr-code.png">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                            Tải về PNG
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
+    </main>
 
-    <!-- QR Result Section -->
-    <div id="qrResult" class="qr-result">
-      <div class="success-check">✓</div>
-      <h3 class="qr-title">Your QR Code is Ready!</h3>
-      
-      <div class="qr-code-container">
-        <div id="qrcode"></div>
-      </div>
-      
-      <!-- Download Button -->
-      <a id="downloadLink" class="download-btn" download="qr-code.png" style="display: none;">
-        Download QR Code
-      </a>
-    </div>
+    <footer class="mt-16 pb-8 text-center text-sm text-slate-500 dark:text-slate-400">
+        <p>&copy; 2024 Text2 - Một sản phẩm của CEO Hóa Nhật Anh.</p>
+    </footer>
 
-    <!-- Download Section -->
-    <div id="downloadSection" class="download-section" style="display: none;">
-      <a id="downloadLink" class="download-btn" download="qr-code.png">
-        Download QR Code
-      </a>
-    </div>
-  </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Elements ---
+            const textInput = document.getElementById('textInput');
+            const qrPlaceholder = document.getElementById('qr-placeholder');
+            const qrResultContainer = document.getElementById('qr-result-container');
+            const qrContainer = document.getElementById('qrcode');
+            const downloadLink = document.getElementById('downloadLink');
+            const themeToggle = document.getElementById('theme-toggle');
+            const sunIcon = document.getElementById('sun-icon');
+            const moonIcon = document.getElementById('moon-icon');
 
-  <footer class="footer">
-    <div class="footer-container">
-      <p class="footer-text">© 2024 Text2. Professional QR Code Generator built with precision and care.</p>
-    </div>
-  </footer>
+            let debounceTimer;
 
-  <script>
-    // Theme management
-    let currentTheme = localStorage.getItem('theme') || 'light';
-    
-    function setTheme(theme) {
-      document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
-      currentTheme = theme;
-      
-      const sunIcon = document.getElementById('sun-icon');
-      const moonIcon = document.getElementById('moon-icon');
-      
-      if (theme === 'dark') {
-        sunIcon.style.display = 'block';
-        moonIcon.style.display = 'none';
-      } else {
-        sunIcon.style.display = 'none';
-        moonIcon.style.display = 'block';
-      }
-    }
-    
-    function toggleTheme() {
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      setTheme(newTheme);
-    }
-    
-    // Initialize theme
-    setTheme(currentTheme);
+            // --- Theme Management ---
+            const userTheme = localStorage.getItem('theme');
+            const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    // Initialize color pickers
-    const darkPicker = Pickr.create({
-      el: '#darkColor',
-      theme: 'classic',
-      default: '#000000',
-      swatches: [
-        '#000000', '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4', '#84cc16'
-      ],
-      components: {
-        preview: true,
-        opacity: true,
-        hue: true,
-        interaction: {
-          hex: true,
-          rgba: true
-        }
-      }
-    });
+            const themeCheck = () => {
+                if (userTheme === 'dark' || (!userTheme && systemTheme)) {
+                    document.documentElement.classList.add('dark');
+                    moonIcon.classList.add('hidden');
+                    sunIcon.classList.remove('hidden');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    moonIcon.classList.remove('hidden');
+                    sunIcon.classList.add('hidden');
+                }
+            };
 
-    const lightPicker = Pickr.create({
-      el: '#lightColor',
-      theme: 'classic',
-      default: '#ffffff',
-      swatches: [
-        '#ffffff', '#f8fafc', '#f1f5f9', '#e2e8f0', '#cbd5e1', '#94a3b8', '#64748b', '#475569'
-      ],
-      components: {
-        preview: true,
-        opacity: true,
-        hue: true,
-        interaction: {
-          hex: true,
-          rgba: true
-        }
-      }
-    });
+            const themeSwitch = () => {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+                themeCheck();
+            };
 
-    function generateQR() {
-      const text = document.getElementById("textInput").value.trim();
-      const darkColor = darkPicker.getColor().toHEXA().toString();
-      const lightColor = lightPicker.getColor().toHEXA().toString();
-      const qrContainer = document.getElementById("qrcode");
-      const qrResult = document.getElementById("qrResult");
-      const downloadLink = document.getElementById("downloadLink");
-      const generateBtn = document.getElementById("generateBtn");
-      const btnText = generateBtn.querySelector('.btn-text');
-      const btnLoading = generateBtn.querySelector('.btn-loading');
+            themeToggle.addEventListener('click', themeSwitch);
+            themeCheck();
 
-      if (!text) {
-        alert("Please enter some text or URL to generate QR code.");
-        return;
-      }
+            // --- Color Pickers ---
+            const createPicker = (el, defaultColor) => {
+                return Pickr.create({
+                    el,
+                    theme: 'classic',
+                    default: defaultColor,
+                    swatches: [
+                        '#000000', '#FFFFFF', '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'
+                    ],
+                    components: {
+                        preview: true,
+                        opacity: true,
+                        hue: true,
+                        interaction: {
+                            hex: true,
+                            rgba: true,
+                            input: true,
+                            save: true
+                        }
+                    }
+                }).on('save', () => generateQR());
+            };
+            const darkPicker = createPicker('#darkColor', '#000000');
+            const lightPicker = createPicker('#lightColor', '#ffffff');
 
-      // Show loading state
-      btnText.classList.add('hidden');
-      btnLoading.classList.remove('hidden');
-      generateBtn.classList.add('loading');
 
-      qrContainer.innerHTML = "";
-      qrResult.classList.remove('show');
-      downloadLink.style.display = 'none'; // Hide download link initially
+            // --- QR Code Generation ---
+            const generateQR = () => {
+                const text = textInput.value.trim();
+                if (!text) {
+                    qrPlaceholder.classList.remove('hidden');
+                    qrResultContainer.classList.add('hidden');
+                    return;
+                }
 
-      QRCode.toCanvas(text, {
-        width: 300,
-        margin: 2,
-        color: {
-          dark: darkColor,
-          light: lightColor
-        },
-        errorCorrectionLevel: 'M'
-      }, function (err, canvas) {
-        // Remove loading state
-        btnText.classList.remove('hidden');
-        btnLoading.classList.add('hidden');
-        generateBtn.classList.remove('loading');
+                const darkColor = darkPicker.getColor().toHEXA().toString();
+                const lightColor = lightPicker.getColor().toHEXA().toString();
+                
+                qrContainer.innerHTML = ''; // Clear previous QR
 
-        if (err) {
-          console.error(err);
-          alert("An error occurred while generating the QR code. Please try again.");
-          return;
-        }
+                QRCode.toCanvas(text, {
+                    width: 500, // High resolution for better quality
+                    margin: 1,
+                    color: {
+                        dark: darkColor,
+                        light: lightColor
+                    },
+                    errorCorrectionLevel: 'H' // High
+                }, function (error, canvas) {
+                    if (error) {
+                        console.error(error);
+                        alert("Đã xảy ra lỗi khi tạo mã QR. Thử lại sau nhé!");
+                        return;
+                    }
+                    
+                    canvas.style.width = "100%";
+                    canvas.style.height = "auto";
+                    canvas.style.borderRadius = "0.75rem"; // rounded-xl
+                    qrContainer.appendChild(canvas);
 
-        qrContainer.appendChild(canvas);
-        qrResult.classList.add('show');
-        
-        const dataURL = canvas.toDataURL("image/png");
-        downloadLink.href = dataURL;
-        downloadLink.download = `qr-code-${Date.now()}.png`;
-        downloadLink.style.display = 'inline-block'; // Show download link after generation
-      });
-    }
+                    // Update UI
+                    qrPlaceholder.classList.add('hidden');
+                    qrResultContainer.classList.remove('hidden');
 
-    // Enter key to generate QR code
-    document.getElementById('textInput').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' && e.ctrlKey) {
-        generateQR();
-      }
-    });
+                    // Set download link
+                    const dataUrl = canvas.toDataURL('image/png');
+                    downloadLink.href = dataUrl;
+                    downloadLink.download = `qr-code-text2-${Date.now()}.png`;
+                });
+            };
 
-    // Auto-generate on first load if there's text
-    document.addEventListener('DOMContentLoaded', function() {
-      const textInput = document.getElementById('textInput');
-      if (textInput.value.trim()) {
-        generateQR();
-      }
-    });
-  </script>
+            // --- Event Listeners ---
+            textInput.addEventListener('input', () => {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(generateQR, 300); // Debounce for smoother experience
+            });
+            
+            // Generate QR with Ctrl+Enter
+            textInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+                   e.preventDefault();
+                   clearTimeout(debounceTimer);
+                   generateQR();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
-
