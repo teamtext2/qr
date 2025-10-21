@@ -1,0 +1,68 @@
+body {
+    font-family: 'Inter', sans-serif;
+}
+/* Custom scrollbar for a more modern feel */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+.dark ::-webkit-scrollbar-track {
+    background: #1e293b;
+}
+.dark ::-webkit-scrollbar-thumb {
+    background: #475569;
+}
+
+/* Custom styles for the color picker to match the theme */
+.pickr .pcr-button {
+    height: 48px;
+    width: 100%;
+    border-radius: 0.75rem; /* rounded-xl */
+    transition: all 0.2s ease-in-out;
+    border: 1px solid #e2e8f0; /* slate-200 */
+}
+.dark .pickr .pcr-button {
+    border: 1px solid #334155; /* slate-700 */
+}
+.pickr .pcr-button:hover {
+    border-color: #3b82f6; /* blue-500 */
+}
+.pickr .pcr-button::before,
+.pickr .pcr-button::after {
+    border-radius: 0.75rem;
+}
+
+/* Animation for the QR code appearance */
+.qr-pop-in {
+    animation: popIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Details/Summary accordion styling */
+details > summary {
+    list-style: none;
+}
+details > summary::-webkit-details-marker {
+    display: none;
+}
+details .summary-icon {
+    transition: transform 0.2s ease-in-out;
+}
+details[open] .summary-icon {
+    transform: rotate(180deg);
+}
