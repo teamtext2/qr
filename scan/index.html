@@ -1,192 +1,406 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Text2 - QR Scan</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="/scan/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/scan/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/scan/favicon-16x16.png">
-  <link rel="manifest" href="/scan/site.webmanifest">
-  <style>
-    body{margin:0;font-family:sans-serif;background:#0f1115;color:#FFFFFF;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:12px}
-    .card{background:#151922;padding:20px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.6);width:100%;max-width:1040px}
-    .title{margin:0 0 14px;font-size:20px;font-weight:800;letter-spacing:.2px}
-    .subtitle{margin:0 0 16px;color:#a9b1c6;font-size:13px}
-    .grid{display:grid;gap:16px}
-    @media(min-width:768px){.grid{grid-template-columns:1.2fr .8fr;align-items:start}}
-    .panel{background:#0f131b;border:1px solid #222836;border-radius:12px;padding:14px}
-    .panel h3{margin:0 0 10px;font-size:14px;color:#a9b1c6;font-weight:700}
-    .media{position:relative}
-    video{width:100%;border-radius:12px;border:1px solid #222836;background:#0b0e13}
-    .preview{margin-top:10px;border-radius:12px;overflow:hidden;border:1px solid #222836;background:#0b0e13}
-    .preview img{display:block;width:100%;height:auto}
-    canvas{display:none}
-    .btn{margin:6px 4px;padding:10px 14px;border:none;border-radius:10px;cursor:pointer;font-weight:700;letter-spacing:.2px}
-    .primary{background:#1E90FF;color:#FFFFFF;box-shadow:0 6px 18px rgba(30,144,255,.25)}
-    .primary:active{transform:translateY(1px)}
-    .ghost{background:transparent;border:1px solid #3b4252;color:#c7d0e4}
-    .muted{background:#0f131b;border:1px solid #222836;color:#a9b1c6}
-    .btns{display:flex;flex-wrap:wrap;justify-content:center}
-    #output{
-      margin-top:12px;
-      word-break:break-all;
-      background:linear-gradient(135deg, #1a1f2e 0%, #0f131b 100%);
-      border:2px solid #1E90FF;
-      padding:16px;
-      border-radius:12px;
-      font-size:15px;
-      color:#e6e9f2;
-      min-height:50px;
-      box-shadow:0 0 20px rgba(30,144,255,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
-      position:relative;
-      font-weight:500;
-      line-height:1.4;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Text2 - QR Scan | Free Online QR Code Scanner</title>
+    <meta name="title" content="Text2 - QR Scan | Free Online QR Code Scanner">
+    <meta name="description" content="Text2 QR Scan - Free online QR code scanner, fast and accurate. Scan QR codes from phone and computer cameras. No app installation required.">
+    <meta name="keywords" content="text2 qr, qr scan, qr code scanner, text2, online qr scanner, free qr scanner, qr reader, barcode scanner">
+    <meta name="author" content="Text2">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://qr.text2.click/scan/">
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://qr.text2.click/scan/">
+    <meta property="og:title" content="Text2 - QR Scan | Free Online QR Code Scanner">
+    <meta property="og:description" content="Text2 QR Scan - Free online QR code scanner, fast and accurate. Scan QR codes from phone and computer cameras.">
+    <meta property="og:image" content="https://qr.text2.click/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Text2 QR Scanner - Online QR code scanner">
+    <meta property="og:site_name" content="Text2">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://qr.text2.click/scan/">
+    <meta property="twitter:title" content="Text2 - QR Scan | Free Online QR Code Scanner">
+    <meta property="twitter:description" content="Text2 QR Scan - Free online QR code scanner, fast and accurate. Scan QR codes from phone and computer cameras.">
+    <meta property="twitter:image" content="https://qr.text2.click/og-image.jpg">
+    <meta property="twitter:image:alt" content="Text2 QR Scanner - Online QR code scanner">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#000000">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Text2 - QR Scan",
+        "alternateName": "Text2 QR Scanner",
+        "description": "Free online QR code scanner, fast and accurate. Scan QR codes from phone and computer cameras.",
+        "url": "https://qr.text2.click/scan/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Text2",
+            "url": "https://text2.click"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "Text2"
+        },
+        "keywords": "text2 qr, qr scan, qr code scanner, text2, online qr scanner",
+        "inLanguage": "en",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "softwareVersion": "1.0",
+        "screenshot": "https://qr.text2.click/screenshot.jpg"
     }
-    #output:before{
-      content:'';
-      position:absolute;
-      top:-2px;
-      left:-2px;
-      right:-2px;
-      bottom:-2px;
-      background:linear-gradient(45deg, #1E90FF, #00BFFF, #1E90FF);
-      border-radius:12px;
-      z-index:-1;
-      animation:glow 2s ease-in-out infinite alternate;
-    }
-    @keyframes glow{
-      0%{opacity:0.5}
-      100%{opacity:0.8}
-    }
-    .hint{margin-top:8px;font-size:12px;color:#8792a8}
-  </style>
+    </script>
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load jsQR library for QR decoding -->
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+    <style>
+        /* Ensure full-screen layout, native app feel */
+        html, body {
+            overscroll-behavior: none;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* Video feed should fill the screen, object-fit: cover to prevent distortion */
+        #video-feed {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover;
+            z-index: 10;
+        }
+
+        /* Dark overlay layer, creates focus effect */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 20;
+        }
+
+        /* Scanner area with border and "laser" effect */
+        .scanner-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70vw;
+            max-width: 280px;
+            height: 70vw;
+            max-height: 280px;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            border-radius: 16px;
+            box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.6);
+            /* Transparent "window" area using box-shadow */
+            z-index: 30;
+            overflow: hidden; /* To contain laser beam */
+        }
+
+        /* Laser beam scanning effect */
+        .laser-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #34d399; /* Green color */
+            box-shadow: 0 0 10px #34d399, 0 0 20px #34d399;
+            animation: scan 2.5s infinite cubic-bezier(0.5, 0, 0.5, 1);
+        }
+
+        /* Animation for laser beam */
+        @keyframes scan {
+            0% { top: 0; }
+            50% { top: 100%; }
+            100% { top: 0; }
+        }
+
+        /* Result panel, hidden below screen */
+        #result-panel {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            color: #1f2937;
+            border-top-left-radius: 24px;
+            border-top-right-radius: 24px;
+            padding: 24px;
+            padding-bottom: 40px; /* Extra padding for safe area (notch) */
+            z-index: 50;
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+            /* Smooth transition effect */
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* "Active" state when panel slides up */
+        #result-panel.active {
+            transform: translateY(0);
+        }
+
+        /* Grip bar (visual indicator) */
+        .grip-bar {
+            width: 50px;
+            height: 5px;
+            background: #d1d5db; /* Light gray */
+            border-radius: 3px;
+            margin: 0 auto 16px;
+        }
+
+        /* Hide canvas used for processing, no need to display */
+        #qr-canvas {
+            display: none;
+        }
+
+        /* Error notification (e.g., no camera access) */
+        #permission-error {
+            display: none; /* Hidden initially */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            z-index: 60;
+        }
+    </style>
 </head>
-<body>
-  <div class="card">
-    <h2 class="title">Text2 QR Scan</h2>
-    <p class="subtitle">Scan QR codes using camera or upload images from gallery.</p>
-    <div class="grid">
-      <div class="panel">
-        <h3>Camera / Image</h3>
-        <div class="media">
-          <video id="video" autoplay playsinline></video>
-          <canvas id="canvas"></canvas>
+<body class="bg-black">
+
+    <!-- Main app container -->
+    <div class="relative w-full h-screen overflow-hidden">
+        
+        <!-- Video stream from camera -->
+        <video id="video-feed" playsinline></video>
+        
+        <!-- Hidden canvas for jsQR processing -->
+        <canvas id="qr-canvas"></canvas>
+
+        <!-- Overlay and scanner interface -->
+        <div class="video-overlay"></div>
+        <div class="scanner-box">
+            <div class="laser-line"></div>
         </div>
-        <div class="btns">
-          <button class="btn primary" id="startCam">Start Camera</button>
-          <label class="btn ghost">Upload Image<input type="file" id="fileInput" accept="image/*" hidden></label>
+
+        <!-- App title -->
+        <div class="absolute top-0 left-0 right-0 p-6 z-40 text-center">
+            <h1 class="text-xl font-bold text-white shadow-lg">QR Code Scanner</h1>
         </div>
-        <div class="preview" id="previewBox" style="display:none">
-          <img id="previewImg" alt="Selected QR image">
+
+        <!-- Error notification panel (e.g., no permission) -->
+        <div id="permission-error">
+            <h2 class="font-bold text-lg mb-2">Camera Error</h2>
+            <p>Unable to access camera. Please grant camera permission in your browser.</p>
         </div>
-        <div class="hint">Thank you for using Text2 services</div>
-      </div>
-      <div class="panel">
-        <h3>Result</h3>
-        <div id="output">No data available</div>
-        <div style="text-align:center">
-          <button class="btn ghost" id="copyBtn">Copy</button>
-          <button class="btn muted" id="openBtn">Open Link</button>
+
+        <!-- Result panel (slides up from bottom) -->
+        <div id="result-panel">
+            <div class="grip-bar"></div>
+            <h2 class="text-2xl font-bold text-center mb-4">Scan Result</h2>
+            
+            <!-- Display QR content -->
+            <div class="bg-gray-100 p-4 rounded-lg mb-5 max-h-32 overflow-y-auto">
+                <code id="result-text" class="text-gray-800 break-words"></code>
+            </div>
+
+            <!-- Action buttons -->
+            <a id="open-link-btn" 
+               href="#" 
+               target="_blank" 
+               class="hidden w-full bg-blue-600 text-white font-bold py-3 px-5 rounded-lg text-center transition duration-200 hover:bg-blue-700">
+                Open Link
+            </a>
+            
+            <button id="scan-again-btn" 
+                    class="w-full bg-gray-200 text-gray-800 font-bold py-3 px-5 rounded-lg text-center mt-3 transition duration-200 hover:bg-gray-300">
+                Scan Again
+            </button>
         </div>
-      </div>
     </div>
-  </div>
 
-  <script>
-    const video=document.getElementById('video');
-    const canvas=document.getElementById('canvas');
-    const ctx=canvas.getContext('2d');
-    const startCam=document.getElementById('startCam');
-    const fileInput=document.getElementById('fileInput');
-    const output=document.getElementById('output');
-    const copyBtn=document.getElementById('copyBtn');
-    const openBtn=document.getElementById('openBtn');
-    const previewBox=document.getElementById('previewBox');
-    const previewImg=document.getElementById('previewImg');
+    <script>
+        // Get DOM elements
+        const video = document.getElementById('video-feed');
+        const canvasElement = document.getElementById('qr-canvas');
+        const canvas = canvasElement.getContext('2d');
+        const resultPanel = document.getElementById('result-panel');
+        const resultText = document.getElementById('result-text');
+        const openLinkBtn = document.getElementById('open-link-btn');
+        const scanAgainBtn = document.getElementById('scan-again-btn');
+        const errorPanel = document.getElementById('permission-error');
 
-    let stream,lastResult='';
-    let detector;
+        // State variables to stop scanning loop when found
+        let isScanning = true;
+        let streamInstance = null; // To store and stop stream
+        let animationFrameId = null;
 
-    async function initDetector(){
-      if('BarcodeDetector' in window){
-        detector=new BarcodeDetector({formats:['qr_code']});
-      }else{
-        await loadJsQR();
-      }
-    }
-    function loadJsQR(){
-      return new Promise((res,rej)=>{
-        const s=document.createElement('script');
-        s.src='https://unpkg.com/jsqr/dist/jsQR.js';
-        s.onload=()=>res();s.onerror=()=>rej();
-        document.head.appendChild(s);
-      });
-    }
-
-    async function startCamera(){
-      stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}});
-      video.srcObject=stream;
-      requestAnimationFrame(tick);
-    }
-
-    async function tick(){
-      if(!video.videoWidth) return requestAnimationFrame(tick);
-      canvas.width=video.videoWidth;canvas.height=video.videoHeight;
-      ctx.drawImage(video,0,0,canvas.width,canvas.height);
-      if(detector){
-        const bitmap=await createImageBitmap(canvas);
-        const codes=await detector.detect(bitmap);
-        if(codes.length) showResult(codes[0].rawValue);
-      }else if(window.jsQR){
-        const img=ctx.getImageData(0,0,canvas.width,canvas.height);
-        const code=jsQR(img.data,img.width,img.height);
-        if(code) showResult(code.data);
-      }
-      requestAnimationFrame(tick);
-    }
-
-    function showResult(txt){lastResult=txt;output.textContent=txt;}
-    startCam.onclick=()=>{initDetector().then(startCamera)};
-
-    // Initialize detector when page loads to enable scanning uploaded images
-    initDetector();
-
-    fileInput.onchange=async e=>{
-      const f=e.target.files[0];if(!f)return;
-      // Ensure detector is ready or jsQR is loaded before processing image
-      await initDetector();
-      const url=URL.createObjectURL(f);
-      // Display image immediately
-      previewImg.src=url;previewBox.style.display='block';
-      const img=new Image();
-      img.onload=async()=>{
-        canvas.width=img.width;canvas.height=img.height;ctx.drawImage(img,0,0);
-        if(detector){
-          try{
-            const bitmap=await createImageBitmap(canvas);
-            const codes=await detector.detect(bitmap);
-            if(codes.length){
-              showResult(codes[0].rawValue);
-              return;
+        // Function to start camera
+        async function startScanner() {
+            try {
+                // Prefer rear camera (environment)
+                const stream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { facingMode: 'environment' } 
+                });
+                
+                streamInstance = stream; // Save stream reference
+                video.srcObject = stream;
+                
+                // Wait for video to be ready
+                video.onloadedmetadata = () => {
+                    video.play();
+                    // Set canvas size to match video size
+                    canvasElement.width = video.videoWidth;
+                    canvasElement.height = video.videoHeight;
+                    
+                    // Start scanning loop
+                    isScanning = true;
+                    animationFrameId = requestAnimationFrame(tick);
+                };
+            } catch (err) {
+                console.error("Camera access error: ", err);
+                // Show error notification
+                errorPanel.style.display = 'block';
             }
-          }catch{}
         }
-        if(window.jsQR){
-          const imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
-          const code=jsQR(imgData.data,imgData.width,imgData.height);
-          if(code){
-            showResult(code.data);
-            return;
-          }
-        }
-        output.textContent='No QR code detected in image.';
-      };
-      img.src=url;
-    };
 
-    copyBtn.onclick=()=>{if(lastResult)navigator.clipboard.writeText(lastResult)};
-    openBtn.onclick=()=>{if(lastResult)window.open(lastResult,'_blank')};
-  </script>
+        // Scanning loop (runs every frame)
+        function tick() {
+            if (!isScanning) {
+                return; // Stop scanning if result found
+            }
+
+            // Only scan if video has enough data
+            if (video.readyState === video.HAVE_ENOUGH_DATA) {
+                // Draw current video frame to hidden canvas
+                canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
+                
+                // Get image data from canvas
+                const imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
+                
+                // Use jsQR to find QR code
+                const code = jsQR(imageData.data, imageData.width, imageData.height, {
+                    inversionAttempts: "dontInvert", // Speed optimization
+                });
+
+                if (code) {
+                    // QR code found!
+                    isScanning = false;
+                    showResult(code.data);
+                    
+                    // Stop camera and loop
+                    if (streamInstance) {
+                        streamInstance.getTracks().forEach(track => track.stop());
+                    }
+                    if (animationFrameId) {
+                        cancelAnimationFrame(animationFrameId);
+                    }
+                    
+                }
+            }
+
+            // Continue loop if not found
+            if (isScanning) {
+                animationFrameId = requestAnimationFrame(tick);
+            }
+        }
+
+        // Function to display result and slide panel up
+        function showResult(data) {
+            resultText.textContent = data;
+            
+            // Check if it's a URL to show "Open Link" button
+            if (data.startsWith('http://') || data.startsWith('https://') || data.startsWith('www.')) {
+                openLinkBtn.href = data;
+                openLinkBtn.style.display = 'block';
+            } else {
+                openLinkBtn.style.display = 'none';
+            }
+
+            // Activate transition
+            resultPanel.classList.add('active');
+            
+            // Pause video (even though stream is stopped)
+            video.pause();
+        }
+
+        // Function to hide panel and scan again
+        function scanAgain() {
+            resultPanel.classList.remove('active');
+            
+            // Wait for slide down animation to complete before restarting camera
+            setTimeout(() => {
+                // Clear previous result
+                resultText.textContent = '';
+                openLinkBtn.style.display = 'none';
+                
+                // Restart scanner
+                startScanner();
+            }, 400); // 400ms matches transition duration
+        }
+
+        // Assign event listener to "Scan Again" button
+        scanAgainBtn.addEventListener('click', scanAgain);
+
+        // Start scanning when page loads
+        window.addEventListener('load', startScanner);
+    </script>
 </body>
 </html>
